@@ -41,11 +41,11 @@ jobs:
         uses: mikepenz/action-junit-report@v2
         if: always() # always run even if the previous step fails
         with:
-          repo_token: ${{ secrets.DI_TOKEN }}
           report_paths: test-results/results.xml
       - name : parse coverage report
         uses: 5monkeys/cobertura-action@master
         with:
+          repo_token: ${{ secrets.DI_TOKEN }}
           path: code-coverage/coverage.xml
           minimum_coverage: 75
       - name: Upload artifacts
