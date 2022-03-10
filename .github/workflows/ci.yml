@@ -35,11 +35,19 @@ jobs:
           source-folder: code
           select-by-folder : tests/A
           test-results-junit : test-results/results.xml
+          
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: always() # always run even if the previous step fails
+        with:
+          report_paths: test-results/results.xml
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
           name: test_results
           path: test-results/results.xml
+          
+
       #- name: Send mail
        # if: ${{ failure() }}
         #uses: dawidd6/action-send-mail@v3
