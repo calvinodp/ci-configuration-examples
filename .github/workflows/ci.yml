@@ -33,6 +33,7 @@ jobs:
         uses: matlab-actions/run-tests@v1
         with:
           source-folder: code
+          select-by-folder : tests/A
 
       # As an alternative to run-tests, you can use run-command to execute a MATLAB script, function, or statement.
       #- name: Run all tests
