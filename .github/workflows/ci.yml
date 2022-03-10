@@ -38,7 +38,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
-          name: test/results
+          name: test_results
           path: test-results/results.xml
 
       # As an alternative to run-tests, you can use run-command to execute a MATLAB script, function, or statement.
