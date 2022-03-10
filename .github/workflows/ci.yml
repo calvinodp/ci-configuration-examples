@@ -42,18 +42,18 @@ jobs:
         if: always() # always run even if the previous step fails
         with:
           report_paths: test-results/results.xml
-      #- name : parse coverage report
-      #  uses: 5monkeys/cobertura-action@master
-      #  with:
-      #    repo_token: ${{ secrets.DI_TOKEN }}
-      #    path: code-coverage/coverage.xml
-      #    minimum_coverage: 75
-      - name: ReportGenerator
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.1.0
+      - name : parse coverage report
+        uses: 5monkeys/cobertura-action@master
         with:
-          reports: 'code-coverage/coverage.xml' # REQUIRED # The coverage reports that should be parsed (separated by semicolon). Globbing is supported.
-          targetdir: 'code-coverage' # REQUIRED # The directory where the generated report should be saved.
-          reporttypes: 'HtmlInline;Cobertura'
+          repo_token: ${{ secrets.DI_TOKEN }}
+          path: code-coverage/coverage.xml
+          minimum_coverage: 75
+      #- name: ReportGenerator
+      #  uses: danielpalme/ReportGenerator-GitHub-Action@5.1.0
+       # with:
+      #    reports: 'code-coverage/coverage.xml' # REQUIRED # The coverage reports that should be parsed (separated by semicolon). Globbing is supported.
+       #   targetdir: 'code-coverage' # REQUIRED # The directory where the generated report should be saved.
+      #    reporttypes: 'HtmlInline;Cobertura'
       - name: Upload artifacts
         uses: actions/upload-artifact@v1
         with:
